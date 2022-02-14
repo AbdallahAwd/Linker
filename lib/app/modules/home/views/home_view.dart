@@ -60,10 +60,14 @@ class HomeView extends GetView<HomeController> {
                       final isAuthed = await LocalAuthApi.authenticate();
                       if (isAuthed) {
                         Get.toNamed(Paths.PRIVATE);
+                        await Future.delayed(Duration(seconds: 1));
                         controller.navIndex.value = 0;
                       } else {
-                        Get.snackbar('Error'.tr, 'Auth-Error'.tr,
-                            backgroundColor: Colors.red, overlayBlur: 5);
+                        Get.snackbar(
+                          'Error'.tr,
+                          'Auth-Error'.tr,
+                          backgroundColor: Colors.red,
+                        );
                         controller.navIndex.value = 0;
                       }
                     }

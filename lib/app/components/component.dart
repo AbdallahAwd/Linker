@@ -34,7 +34,11 @@ Widget defaultTextFormFeild({
             color: const Color.fromARGB(255, 98, 0, 238),
           ),
           suffix: suffixWidget,
-          suffixIcon: IconButton(onPressed: suffPress, icon: Icon(suff)),
+          suffixIcon: IconButton(
+            onPressed: suffPress,
+            icon: Icon(suff),
+            color: mainColor,
+          ),
           border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(20.0),
               borderSide: const BorderSide(color: mainColor)),
