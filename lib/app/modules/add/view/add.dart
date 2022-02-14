@@ -70,6 +70,10 @@ class AddView extends GetView<AddController> {
                           controller: controller.titleController,
                           pre: MyFlutterApp.title,
                           hintText: 'Title'.tr,
+                          suff: Icons.highlight_remove_rounded,
+                          suffPress: () {
+                            controller.titleController.clear();
+                          },
                           validate: (value) {
                             if (value!.isEmpty) {
                               return 'Validation'.tr;
@@ -84,6 +88,10 @@ class AddView extends GetView<AddController> {
                           controller: controller.urlController,
                           pre: MyFlutterApp.linker,
                           hintText: 'URL'.tr,
+                          suff: Icons.highlight_remove_rounded,
+                          suffPress: () {
+                            controller.urlController.clear();
+                          },
                           validate: (String? value) {
                             if (value!.isEmpty) {
                               return 'Validation'.tr;
