@@ -52,7 +52,7 @@ class MyApp extends StatelessWidget {
 }
 
 Future<void> deviceLang(language) async {
-  if (language == 'ar_EG') {
+  if (language == 'ar_EG'|| language == 'ar_SA' || language == 'ar_AE') {
     await Get.updateLocale(const Locale('ar'));
   } else if (language == 'es_ES') {
     await Get.updateLocale(const Locale('es'));
