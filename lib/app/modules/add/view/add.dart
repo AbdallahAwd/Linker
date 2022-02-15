@@ -36,177 +36,182 @@ class AddView extends GetView<AddController> {
     controller.urlController.text = url ?? '';
     controller.favoriteCheck = isFav ?? false;
     controller.privateCheck = isPriv ?? false;
-    return Scaffold(
-      appBar: AppBar(title: mainText(context, text: appTitle ?? 'Add-Link'.tr)),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 30.0, horizontal: 20),
-        child: TweenAnimationBuilder(
-          tween: _scaleTween,
-          duration: const Duration(milliseconds: 500),
-          builder: (context, double angle, child) {
-            return Transform.rotate(
-              angle: angle,
-              child: child,
-            );
-          },
-          child: Container(
-              decoration: BoxDecoration(
-                color: const Color(0x006200ee),
-                borderRadius: BorderRadius.circular(30.0),
-                border: Border.all(width: 1.0, color: const Color(0xff707070)),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.all(18.0),
-                child: Form(
-                  key: formKey,
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      const SizedBox(
-                        height: 40,
-                      ),
-                      defaultTextFormFeild(
-                          controller: controller.titleController,
-                          pre: MyFlutterApp.title,
-                          hintText: 'Title'.tr,
-                          suff: Icons.highlight_remove_rounded,
-                          suffPress: () {
-                            controller.titleController.clear();
-                          },
-                          validate: (value) {
-                            if (value!.isEmpty) {
-                              return 'Validation'.tr;
-                            }
-                            return null;
-                          },
-                          keyType: TextInputType.text),
-                      const SizedBox(
-                        height: 18,
-                      ),
-                      defaultTextFormFeild(
-                          controller: controller.urlController,
-                          pre: MyFlutterApp.linker,
-                          hintText: 'URL'.tr,
-                          suff: Icons.highlight_remove_rounded,
-                          suffPress: () {
-                            controller.urlController.clear();
-                          },
-                          validate: (String? value) {
-                            if (value!.isEmpty) {
-                              return 'Validation'.tr;
-                            }
-                            return null;
-                          },
-                          keyType: TextInputType.text),
-                      const SizedBox(
-                        height: 18,
-                      ),
-                      Row(
-                        children: [
-                          GetBuilder<AddController>(
-                            builder: (controller) => Checkbox(
-                              value: controller.favoriteCheck,
-                              onChanged: (val) {
-                                controller.changeFavCheck(val!);
-                              },
-                              activeColor: mainColor,
-                            ),
-                          ),
-                          mainText(context,
-                              text: 'Add-Favorite'.tr, fontsize: 13),
-                          GetBuilder<AddController>(
-                            builder: (controller) => Checkbox(
-                                activeColor: mainColor,
-                                value: controller.privateCheck,
-                                onChanged: (val) {
-                                  controller.changePriCheck(val!);
-                                }),
-                          ),
-                          mainText(context,
-                              text: 'Add-Private'.tr, fontsize: 13),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          OutlinedButton(
-                              onPressed: () {
-                                controller.clear();
-                                Get.back(closeOverlays: true);
-                                SaveAd.showSaveAd();
-                                HapticFeedback.lightImpact();
-                              },
-                              child: Text('Cancel'.tr)),
-                          ElevatedButton(
-                              child: Text(appSave ?? 'SAVE'.tr),
-                              onPressed: () async {
-                                HapticFeedback.lightImpact();
-
-                                if (formKey.currentState!.validate()) {
-                                  if (GetUtils.isURL(
-                                              controller.urlController.text) &&
-                                          controller.urlController.text
-                                              .contains('https://') &&
-                                          appSave == null ||
-                                      controller.urlController.text
-                                          .contains('http://')) {
-                                    if (controller.favoriteCheck) {
-                                      controller.isFav();
-                                    } else if (controller.privateCheck) {
-                                      controller.isPrivate();
-                                    } else {
-                                      controller.addLink();
-                                    }
-
-                                    toast(text: 'Added'.tr);
-                                    SaveAd.showSaveAd();
-                                    Get.back(closeOverlays: true);
-                                    await Future.delayed(
-                                        const Duration(milliseconds: 500));
-
-                                    controller.clear();
-                                  } else if (appSave == 'UPDATE'.tr &&
-                                          GetUtils.isURL(
-                                              controller.urlController.text) &&
-                                          controller.urlController.text
-                                              .contains('https://') ||
-                                      controller.urlController.text
-                                          .contains('http://')) {
-                                    controller.updateLink(
-                                        homeController.itemId[index]);
-                                    if (controller.favoriteCheck) {
-                                      controller.isFav();
-                                      homeController.deleteItem(
-                                          homeController.itemId[index]);
-                                    } else if (controller.privateCheck) {
-                                      controller.isPrivate();
-                                      homeController.deleteItem(
-                                          homeController.itemId[index]);
-                                    }
-                                    SaveAd.showSaveAd();
-                                    toast(text: 'Updated'.tr);
-
-                                    Get.back(closeOverlays: true);
-                                  } else {
-                                    Get.snackbar(
-                                      'Error'.tr,
-                                      'invalid-Link'.tr,
-                                      backgroundColor: Colors.red,
-                                      snackPosition: SnackPosition.BOTTOM,
-                                    );
-                                  }
-                                }
-                              }),
-                        ],
-                      )
-                    ],
-                  ),
+    return MediaQuery(
+      data: MediaQuery.of(context).copyWith(textScaleFactor: 0.85),
+      child: Scaffold(
+        appBar:
+            AppBar(title: mainText(context, text: appTitle ?? 'Add-Link'.tr)),
+        body: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 30.0, horizontal: 20),
+          child: TweenAnimationBuilder(
+            tween: _scaleTween,
+            duration: const Duration(milliseconds: 500),
+            builder: (context, double angle, child) {
+              return Transform.rotate(
+                angle: angle,
+                child: child,
+              );
+            },
+            child: Container(
+                decoration: BoxDecoration(
+                  color: const Color(0x006200ee),
+                  borderRadius: BorderRadius.circular(30.0),
+                  border:
+                      Border.all(width: 1.0, color: const Color(0xff707070)),
                 ),
-              )),
+                child: Padding(
+                  padding: const EdgeInsets.all(18.0),
+                  child: Form(
+                    key: formKey,
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        const SizedBox(
+                          height: 40,
+                        ),
+                        defaultTextFormFeild(
+                            controller: controller.titleController,
+                            pre: MyFlutterApp.title,
+                            hintText: 'Title'.tr,
+                            suff: Icons.highlight_remove_rounded,
+                            suffPress: () {
+                              controller.titleController.clear();
+                            },
+                            validate: (value) {
+                              if (value!.isEmpty) {
+                                return 'Validation'.tr;
+                              }
+                              return null;
+                            },
+                            keyType: TextInputType.text),
+                        const SizedBox(
+                          height: 18,
+                        ),
+                        defaultTextFormFeild(
+                            controller: controller.urlController,
+                            pre: MyFlutterApp.linker,
+                            hintText: 'URL'.tr,
+                            suff: Icons.highlight_remove_rounded,
+                            suffPress: () {
+                              controller.urlController.clear();
+                            },
+                            validate: (String? value) {
+                              if (value!.isEmpty) {
+                                return 'Validation'.tr;
+                              }
+                              return null;
+                            },
+                            keyType: TextInputType.text),
+                        const SizedBox(
+                          height: 18,
+                        ),
+                        Row(
+                          children: [
+                            GetBuilder<AddController>(
+                              builder: (controller) => Checkbox(
+                                value: controller.favoriteCheck,
+                                onChanged: (val) {
+                                  controller.changeFavCheck(val!);
+                                },
+                                activeColor: mainColor,
+                              ),
+                            ),
+                            mainText(context,
+                                text: 'Add-Favorite'.tr, fontsize: 13),
+                            GetBuilder<AddController>(
+                              builder: (controller) => Checkbox(
+                                  activeColor: mainColor,
+                                  value: controller.privateCheck,
+                                  onChanged: (val) {
+                                    controller.changePriCheck(val!);
+                                  }),
+                            ),
+                            mainText(context,
+                                text: 'Add-Private'.tr, fontsize: 13),
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            OutlinedButton(
+                                onPressed: () {
+                                  controller.clear();
+                                  Get.back(closeOverlays: true);
+                                  SaveAd.showSaveAd();
+                                  HapticFeedback.lightImpact();
+                                },
+                                child: Text('Cancel'.tr)),
+                            ElevatedButton(
+                                child: Text(appSave ?? 'SAVE'.tr),
+                                onPressed: () async {
+                                  HapticFeedback.lightImpact();
+
+                                  if (formKey.currentState!.validate()) {
+                                    if (GetUtils.isURL(controller
+                                                .urlController.text) &&
+                                            controller.urlController.text
+                                                .contains('https://') &&
+                                            appSave == null ||
+                                        controller.urlController.text
+                                            .contains('http://')) {
+                                      if (controller.favoriteCheck) {
+                                        controller.isFav();
+                                      } else if (controller.privateCheck) {
+                                        controller.isPrivate();
+                                      } else {
+                                        controller.addLink();
+                                      }
+
+                                      toast(text: 'Added'.tr);
+                                      SaveAd.showSaveAd();
+                                      Get.back(closeOverlays: true);
+                                      await Future.delayed(
+                                          const Duration(milliseconds: 500));
+
+                                      controller.clear();
+                                    } else if (appSave == 'UPDATE'.tr &&
+                                            GetUtils.isURL(controller
+                                                .urlController.text) &&
+                                            controller.urlController.text
+                                                .contains('https://') ||
+                                        controller.urlController.text
+                                            .contains('http://')) {
+                                      controller.updateLink(
+                                          homeController.itemId[index]);
+                                      if (controller.favoriteCheck) {
+                                        controller.isFav();
+                                        homeController.deleteItem(
+                                            homeController.itemId[index]);
+                                      } else if (controller.privateCheck) {
+                                        controller.isPrivate();
+                                        homeController.deleteItem(
+                                            homeController.itemId[index]);
+                                      }
+                                      SaveAd.showSaveAd();
+                                      toast(text: 'Updated'.tr);
+
+                                      Get.back(closeOverlays: true);
+                                    } else {
+                                      Get.snackbar(
+                                        'Error'.tr,
+                                        'invalid-Link'.tr,
+                                        backgroundColor: Colors.red,
+                                        snackPosition: SnackPosition.BOTTOM,
+                                      );
+                                    }
+                                  }
+                                }),
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
+                )),
+          ),
         ),
       ),
     );
