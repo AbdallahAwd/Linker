@@ -60,7 +60,7 @@ class HomeView extends GetView<HomeController> {
                       final isAuthed = await LocalAuthApi.authenticate();
                       if (isAuthed) {
                         Get.toNamed(Paths.PRIVATE);
-                        await Future.delayed(Duration(seconds: 1));
+                        await Future.delayed(const Duration(seconds: 1));
                         controller.navIndex.value = 0;
                       } else {
                         Get.snackbar(
