@@ -187,8 +187,9 @@ class AddView extends GetView<AddController> {
                                       homeController.deleteItem(
                                           homeController.itemId[index]);
                                     }
-                                    toast(text: 'Updated'.tr);
                                     SaveAd.showSaveAd();
+                                    toast(text: 'Updated'.tr);
+
                                     Get.back(closeOverlays: true);
                                   } else {
                                     Get.snackbar(

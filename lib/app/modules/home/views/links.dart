@@ -3,6 +3,7 @@ import 'package:clipboard/clipboard.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
+import 'package:linker/app/ads/save_ad.dart';
 import 'package:linker/app/components/component.dart';
 import 'package:linker/app/modules/add/models/model.dart';
 import 'package:linker/app/modules/add/view/add.dart';
@@ -73,6 +74,7 @@ Widget linkerBuilder(
   context,
 ) {
   HomeController controller = Get.put(HomeController());
+
   double width = MediaQuery.of(context).size.width;
   return AnimationConfiguration.staggeredList(
     position: index,
@@ -172,9 +174,7 @@ Widget linkerBuilder(
                         ),
                         IconButton(
                           onPressed: () async {
-                            if (await canLaunch(model.url!)) {
-                              await launch(model.url!);
-                            }
+                            _launchURL(model.url);
                           },
                           icon: const Icon(MyFlutterApp.launch),
                         ),
@@ -231,6 +231,7 @@ Widget linkerBuilder(
                                             appSave: 'UPDATE'.tr,
                                             appTitle: 'Update-Link'.tr),
                                       );
+                                      SaveAd.loadSaveAd();
                                     },
                                     child: animatedUnder(
                                         icon: Icons.edit, text: 'Edit'.tr))
@@ -267,6 +268,10 @@ Widget linkerBuilder(
       ),
     ),
   );
+}
+
+void _launchURL(_url) async {
+  if (!await launch(_url)) throw 'Could not launch $_url';
 }
 
 Widget underText(text) {

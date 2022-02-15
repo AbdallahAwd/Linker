@@ -1,5 +1,5 @@
 class AdHelper {
-  static const bool isTest = true;
+  static const bool isTest = false;
   static String get saveAd {
     if (isTest) {
       return 'ca-app-pub-3940256099942544/1033173712';
