@@ -119,6 +119,7 @@ class AddView extends GetView<AddController> {
                             ),
                             mainText(context,
                                 text: 'Add-Favorite'.tr, fontsize: 13),
+                            // const Spacer(),
                             GetBuilder<AddController>(
                               builder: (controller) => Checkbox(
                                   activeColor: mainColor,
@@ -127,8 +128,13 @@ class AddView extends GetView<AddController> {
                                     controller.changePriCheck(val!);
                                   }),
                             ),
-                            mainText(context,
-                                text: 'Add-Private'.tr, fontsize: 13),
+                            Expanded(
+                              child: mainText(
+                                context,
+                                text: 'Add-Private'.tr,
+                                fontsize: 13,
+                              ),
+                            ),
                           ],
                         ),
                         const SizedBox(

@@ -62,11 +62,14 @@ Future toast({
         textColor: Colors.white,
         fontSize: 16.0);
 
-Widget mainText(context, {required String text, double fontsize = 18}) =>
-    Text(text,
-        style: Theme.of(context).textTheme.bodyText1!.copyWith(
-              fontSize: fontsize,
-            ));
+Widget mainText(context, {required String text, double fontsize = 18}) => Text(
+      text,
+      style: Theme.of(context).textTheme.bodyText1!.copyWith(
+            fontSize: fontsize,
+          ),
+      maxLines: 1,
+      overflow: TextOverflow.ellipsis,
+    );
 
 enum Themess { FollowSystem, DarkMode, LightMode }
 
