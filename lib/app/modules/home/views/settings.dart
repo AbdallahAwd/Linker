@@ -57,6 +57,11 @@ class _SettingsAppState extends State<SettingsApp> {
                     clipBehavior: Clip.antiAliasWithSaveLayer,
                     child: Image.network(
                       homeController.userModel!.image!,
+                      errorBuilder: ((context, error, stackTrace) => const Icon(
+                            Icons.info,
+                            size: 90,
+                            color: Colors.white,
+                          )),
                     ),
                   ),
                 ),
