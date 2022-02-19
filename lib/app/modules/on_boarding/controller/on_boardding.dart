@@ -14,6 +14,11 @@ class OnBoardingController extends GetxController {
     update();
   }
 
+  void changeTapToFalse() {
+    isTaped = false;
+    update();
+  }
+
   void changeNum(int index) {
     this.index.value = index;
   }

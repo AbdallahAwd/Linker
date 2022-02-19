@@ -11,8 +11,8 @@ import 'package:get/get.dart';
 class OnBoarding extends StatelessWidget {
   OnBoardingController controller = Get.put(OnBoardingController());
 
-  Tween<Offset> _scaleTween =
-      Tween<Offset>(begin: Offset.zero, end: Offset.fromDirection(30, 30));
+  // Tween<Offset> _scaleTween =
+  //     Tween<Offset>(begin: Offset.zero, end: Offset.fromDirection(30, 30));
 
   @override
   Widget build(BuildContext context) {
@@ -47,48 +47,38 @@ class OnBoarding extends StatelessWidget {
             ),
           ),
           bottomSheet: controller.index.value == 2
-              ? TweenAnimationBuilder(
-                  tween: _scaleTween,
-                  duration: const Duration(milliseconds: 600),
-                  builder: (context, Offset scale, child) {
-                    return Transform.translate(
-                      offset: scale,
-                      // angle: scale,
-                      child: child,
-                    );
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 15.0),
-                    child: SizedBox(
-                      height: 50,
-                      child: Center(
-                          child: GetBuilder<OnBoardingController>(
-                        builder: (controller) => Container(
-                          width: controller.isTaped ? 70 : double.infinity,
-                          height: 60,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(
-                                  controller.isTaped ? 150 : 10)),
-                          clipBehavior: Clip.antiAliasWithSaveLayer,
-                          child: ElevatedButton(
-                            child: controller.isTaped
-                                ? const CircularProgressIndicator(
-                                    color: Colors.white)
-                                : WavyText(
-                                    fontSize: 16, text: 'Get-Started'.tr),
-                            onPressed: () async {
-                              controller.changeTap();
-                              await controller.googleLogIn();
-                              Future.delayed(const Duration(seconds: 1));
-                              controller.addUserData();
-                              controller.uid != null
-                                  ? Get.offAllNamed(Paths.HOME)
-                                  : null;
-                            },
-                          ),
+              ? Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 15.0, vertical: 30),
+                  child: SizedBox(
+                    height: 50,
+                    child: Center(
+                        child: GetBuilder<OnBoardingController>(
+                      builder: (controller) => Container(
+                        width: controller.isTaped ? 70 : double.infinity,
+                        height: 60,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(
+                                controller.isTaped ? 150 : 10)),
+                        clipBehavior: Clip.antiAliasWithSaveLayer,
+                        child: ElevatedButton(
+                          child: controller.isTaped
+                              ? const CircularProgressIndicator(
+                                  color: Colors.white)
+                              : WavyText(fontSize: 16, text: 'Get-Started'.tr),
+                          onPressed: () async {
+                            controller.changeTap();
+                            await controller.googleLogIn();
+                            Future.delayed(const Duration(seconds: 1));
+                            controller.changeTapToFalse();
+                            controller.addUserData();
+                            controller.uid != null
+                                ? Get.offAllNamed(Paths.HOME)
+                                : null;
+                          },
                         ),
-                      )),
-                    ),
+                      ),
+                    )),
                   ),
                 )
               : Padding(

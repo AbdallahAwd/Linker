@@ -108,7 +108,10 @@ class HomeView extends GetView<HomeController> {
                       SaveAd.loadSaveAd();
                     },
                     elevation: 50,
-                    child: const Icon(Icons.add)),
+                    child: const Icon(
+                      Icons.add,
+                      color: Colors.white,
+                    )),
               ),
       ),
     );
