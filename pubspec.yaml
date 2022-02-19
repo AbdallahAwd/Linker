@@ -31,15 +31,10 @@ dependencies:
 
 dev_dependencies:
   flutter_lints: ^1.0.0
-  flutter_native_splash: ^1.2.0
+ 
   flutter_test:
     sdk: flutter
-flutter_native_splash:
-  image: assets/icon.png
-  color: "#f7f7f7"
-  color_dark: "#2b282b"
-  android: true
-  ios: true
+
 flutter:
   uses-material-design: true
   assets:
