@@ -2,12 +2,15 @@ import 'package:floating_bottom_navigation_bar/floating_bottom_navigation_bar.da
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:linker/app/modules/add/controller/add_controller.dart';
+import 'package:linker/app/modules/add/view/add.dart';
 import 'package:linker/app/routes/app_pages.dart';
 import 'package:linker/app/themes/colors.dart';
 
 import '../../../ads/banner_ad.dart';
 import '../../../ads/save_ad.dart';
 import '../../../components/component.dart';
+import '../../../components/transition.dart';
 import '../../../data/authApi/auth.dart';
 import '../../../themes/my_flutter_app_icons.dart';
 import '../controllers/home_controller.dart';
@@ -101,7 +104,8 @@ class HomeView extends GetView<HomeController> {
                     borderRadius: BorderRadius.circular(50)),
                 child: FloatingActionButton(
                     onPressed: () {
-                      Get.toNamed(Paths.ADD);
+                      Get.lazyPut(() => AddController());
+                      Navigator.push(context, ScaleTransition4(AddView()));
                       SaveAd.loadSaveAd();
                     },
                     elevation: 50,

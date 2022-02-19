@@ -1,7 +1,6 @@
 import 'package:flutter/animation.dart';
 import 'package:get/get.dart';
 import 'package:linker/app/modules/add/binding/binding.dart';
-import 'package:linker/app/modules/add/view/add.dart';
 import 'package:linker/app/modules/home/views/home_view.dart';
 import 'package:linker/app/modules/home/views/private_screen.dart';
 import 'package:linker/app/modules/on_boarding/binding/binding.dart';
@@ -34,13 +33,13 @@ class AppPages {
         transition: Transition.rightToLeft,
         curve: Curves.fastOutSlowIn,
         transitionDuration: const Duration(milliseconds: 500)),
-    GetPage(
-        name: Paths.ADD,
-        page: () => AddView(),
-        binding: AddBinding(),
-        transition: Transition.rightToLeft,
-        curve: Curves.fastOutSlowIn,
-        transitionDuration: const Duration(milliseconds: 500)),
+    // GetPage(
+    //     name: Paths.ADD,
+    //     page: () => AddView(),
+    //     binding: AddBinding(),
+    //     transition: ScaleTransition4(),
+    //     curve: Curves.fastOutSlowIn,
+    //     transitionDuration: const Duration(milliseconds: 500)),
     GetPage(
         name: Paths.PRIVATE,
         page: () => const PrivateScreen(),

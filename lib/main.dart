@@ -7,6 +7,8 @@ import 'package:get_storage/get_storage.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:linker/app/Translations/translation.dart';
 import 'package:linker/app/themes/themes.dart';
+import 'app/components/splash_screen.dart';
+import 'app/modules/home/controllers/home_controller.dart';
 import 'app/routes/app_pages.dart';
 
 Future<void> main() async {
@@ -32,6 +34,7 @@ class MyApp extends StatelessWidget {
   MyApp(this.uId, this.isDark, this.language);
   @override
   Widget build(BuildContext context) {
+    Get.lazyPut(() => HomeController());
     return GetMaterialApp(
       title: "Linker",
       translations: Localization(),
@@ -39,7 +42,7 @@ class MyApp extends StatelessWidget {
       theme: Themes.lightTheme,
       darkTheme: Themes.darkTheme,
       themeMode: generalTheme(isDark ?? 'Follow System'),
-      initialRoute: uId == null ? AppPages.INITIAL : Paths.HOME,
+      home: SecondPage(uId: uId),
       getPages: AppPages.routes,
     );
   }
@@ -52,7 +55,7 @@ class MyApp extends StatelessWidget {
 }
 
 Future<void> deviceLang(language) async {
-  if (language == 'ar_EG'|| language == 'ar_SA' || language == 'ar_AE') {
+  if (language == 'ar_EG' || language == 'ar_SA' || language == 'ar_AE') {
     await Get.updateLocale(const Locale('ar'));
   } else if (language == 'es_ES') {
     await Get.updateLocale(const Locale('es'));
