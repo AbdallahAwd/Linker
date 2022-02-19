@@ -9,7 +9,6 @@ import 'package:linker/app/themes/colors.dart';
 
 import '../../../ads/banner_ad.dart';
 import '../../../ads/save_ad.dart';
-import '../../../components/component.dart';
 import '../../../components/transition.dart';
 import '../../../data/authApi/auth.dart';
 import '../../../themes/my_flutter_app_icons.dart';
@@ -109,9 +108,8 @@ class HomeView extends GetView<HomeController> {
                       SaveAd.loadSaveAd();
                     },
                     elevation: 50,
-                    child: animateIcon(
-                      context,
-                      icon: Icons.add,
+                    child: const Icon(
+                      Icons.add,
                     )),
               ),
       ),

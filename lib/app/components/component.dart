@@ -1,6 +1,5 @@
 // ignore_for_file: constant_identifier_names
 
-import 'package:animator/animator.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:linker/app/themes/colors.dart';
@@ -72,31 +71,3 @@ Widget mainText(context, {required String text, double fontsize = 18}) => Text(
     );
 
 enum Themess { FollowSystem, DarkMode, LightMode }
-
-Widget animateIcon(context,
-    {required IconData icon,
-    Curve curve = Curves.easeInOut,
-    int scale = 5,
-    double begin = 3,
-    double end = 6,
-    Color color = Colors.white}) {
-  double _width = MediaQuery.of(context).size.width;
-  // scale = 5;
-  return Center(
-    child: SizedBox(
-      height: _width / 2.7,
-      width: _width / 2.7,
-      child: Animator<double>(
-        duration: const Duration(milliseconds: 1000),
-        cycles: 0,
-        curve: curve,
-        tween: Tween<double>(begin: begin, end: end),
-        builder: (context, animatorState, child) => Icon(
-          icon,
-          size: animatorState.value * scale,
-          color: color,
-        ),
-      ),
-    ),
-  );
-}
