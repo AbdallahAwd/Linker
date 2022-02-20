@@ -1,7 +1,7 @@
 name: linker
 version: 1.0.0+1
 publish_to: none
-description: A new Flutter project.
+description: Linker is an App to save Your Links
 environment:
   sdk: '>=2.16.0-134.5.beta <3.0.0'
 
