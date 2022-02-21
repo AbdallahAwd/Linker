@@ -147,12 +147,10 @@ class AddView extends GetView<AddController> {
 
                                 if (formKey.currentState!.validate()) {
                                   if (GetUtils.isURL(
-                                              controller.urlController.text) &&
-                                          controller.urlController.text
-                                              .contains('https://') &&
-                                          appSave == null ||
+                                          controller.urlController.text) &&
                                       controller.urlController.text
-                                          .contains('http://')) {
+                                          .contains('https://') &&
+                                      appSave == null) {
                                     if (controller.favoriteCheck) {
                                       controller.isFav();
                                     } else if (controller.privateCheck) {
@@ -169,12 +167,10 @@ class AddView extends GetView<AddController> {
 
                                     controller.clear();
                                   } else if (appSave == 'UPDATE'.tr &&
-                                          GetUtils.isURL(
-                                              controller.urlController.text) &&
-                                          controller.urlController.text
-                                              .contains('https://') ||
+                                      GetUtils.isURL(
+                                          controller.urlController.text) &&
                                       controller.urlController.text
-                                          .contains('http://')) {
+                                          .contains('https://')) {
                                     controller.updateLink(
                                         homeController.itemId[index]);
                                     if (controller.favoriteCheck) {

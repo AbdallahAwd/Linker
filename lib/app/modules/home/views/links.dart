@@ -85,182 +85,160 @@ Widget linkerBuilder(
       child: ScaleAnimation(
         duration: const Duration(milliseconds: 1500),
         curve: Curves.fastLinearToSlowEaseIn,
-        child: Dismissible(
-          key: const Key('1'),
-          onDismissed: (direction) {
+        child: InkWell(
+          onLongPress: () {
+            FlutterClipboard.copy(model.url!);
             HapticFeedback.heavyImpact();
-            AddController c = Get.put(AddController());
-            if (num == 1) {
-              controller.deleteItem(controller.itemId[index]);
-            } else if (num == 2) {
-              HapticFeedback.lightImpact();
-              c.favDelete(c.favoriteItem[index]);
-            } else if (num == 3) {
-              HapticFeedback.lightImpact();
-              c.privDelete(c.privateItem[index]);
-            } else {
-              SearchController controller = Get.put(SearchController());
-              HapticFeedback.lightImpact();
-              controller.searchDelete(controller.searchListId[index]);
-            }
+            toast(text: 'Copied');
           },
-          child: InkWell(
-            onLongPress: () {
-              FlutterClipboard.copy(model.url!);
-              HapticFeedback.heavyImpact();
-              toast(text: 'Copied');
-            },
-            child: Container(
-              height: 95,
-              margin: EdgeInsets.only(bottom: width / 20),
-              decoration: BoxDecoration(
-                color: mainColor,
-                borderRadius: BorderRadius.circular(20.0),
-                border: Border.all(width: 1.0, color: const Color(0xff707070)),
-              ),
-              clipBehavior: Clip.antiAlias,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            SizedBox(
-                              width: width / 2,
-                              child: Text(
-                                model.title!,
-                                style: TextStyle(
-                                  fontFamily: 'Candara',
-                                  fontSize: 20,
-                                  color: Colors.white.withOpacity(0.8),
-                                  letterSpacing: 1.7799999999999998,
-                                  fontWeight: FontWeight.w700,
-                                  height: 0.8,
-                                ),
-                                overflow: TextOverflow.ellipsis,
-                                textHeightBehavior: const TextHeightBehavior(
-                                    applyHeightToFirstAscent: false),
-                                softWrap: false,
+          child: Container(
+            height: 95,
+            margin: EdgeInsets.only(bottom: width / 20),
+            decoration: BoxDecoration(
+              color: mainColor,
+              borderRadius: BorderRadius.circular(20.0),
+              border: Border.all(width: 1.0, color: const Color(0xff707070)),
+            ),
+            clipBehavior: Clip.antiAlias,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(
+                            width: width / 2,
+                            child: Text(
+                              model.title!,
+                              style: TextStyle(
+                                fontFamily: 'Candara',
+                                fontSize: 20,
+                                color: Colors.white.withOpacity(0.8),
+                                letterSpacing: 1.7799999999999998,
+                                fontWeight: FontWeight.w700,
+                                height: 0.8,
                               ),
+                              overflow: TextOverflow.ellipsis,
+                              textHeightBehavior: const TextHeightBehavior(
+                                  applyHeightToFirstAscent: false),
+                              softWrap: false,
                             ),
-                            const SizedBox(
-                              height: 5,
-                            ),
-                            SizedBox(
-                              width: 200,
-                              child: Text(
-                                model.url!,
-                                style: const TextStyle(
-                                  fontFamily: 'Candara',
-                                  fontSize: 15,
-                                  color: Color(0x80000000),
-                                  letterSpacing: 1.335,
-                                  fontWeight: FontWeight.w700,
-                                  height: 1.6,
-                                ),
-                                maxLines: 1,
-                                textHeightBehavior: const TextHeightBehavior(
-                                    applyHeightToFirstAscent: false),
-                                textAlign: TextAlign.start,
-                                softWrap: false,
+                          ),
+                          const SizedBox(
+                            height: 5,
+                          ),
+                          SizedBox(
+                            width: 200,
+                            child: Text(
+                              model.url!,
+                              style: const TextStyle(
+                                fontFamily: 'Candara',
+                                fontSize: 15,
+                                color: Color(0x80000000),
+                                letterSpacing: 1.335,
+                                fontWeight: FontWeight.w700,
+                                height: 1.6,
                               ),
+                              maxLines: 1,
+                              textHeightBehavior: const TextHeightBehavior(
+                                  applyHeightToFirstAscent: false),
+                              textAlign: TextAlign.start,
+                              softWrap: false,
                             ),
-                          ],
-                        ),
-                        IconButton(
-                          onPressed: () async {
-                            _launchURL(model.url);
-                          },
-                          icon: const Icon(MyFlutterApp.launch),
-                        ),
-                      ],
-                    ),
-                    Flexible(
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(
-                            horizontal: num == 1 ? 10.0 : 25.0),
-                        child: Row(
-                          children: [
-                            InkWell(
-                              onTap: () {
-                                HapticFeedback.heavyImpact();
-                                AddController c = Get.put(AddController());
-                                if (num == 1) {
-                                  controller
-                                      .deleteItem(controller.itemId[index]);
-                                } else if (num == 2) {
-                                  HapticFeedback.lightImpact();
-                                  c.favDelete(c.favoriteItem[index]);
-                                } else if (num == 3) {
-                                  HapticFeedback.lightImpact();
-                                  c.privDelete(c.privateItem[index]);
-                                } else {
-                                  SearchController controller =
-                                      Get.put(SearchController());
-                                  HapticFeedback.lightImpact();
-                                  controller.searchDelete(
-                                      controller.searchListId[index]);
-                                }
+                          ),
+                        ],
+                      ),
+                      IconButton(
+                        onPressed: () async {
+                          _launchURL(model.url);
+                        },
+                        icon: const Icon(MyFlutterApp.launch),
+                      ),
+                    ],
+                  ),
+                  Flexible(
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: num == 1 ? 10.0 : 25.0),
+                      child: Row(
+                        children: [
+                          InkWell(
+                            onTap: () {
+                              HapticFeedback.heavyImpact();
+                              AddController c = Get.put(AddController());
+                              if (num == 1) {
+                                controller.deleteItem(controller.itemId[index]);
+                              } else if (num == 2) {
+                                HapticFeedback.lightImpact();
+                                c.favDelete(c.favoriteItem[index]);
+                              } else if (num == 3) {
+                                HapticFeedback.lightImpact();
+                                c.privDelete(c.privateItem[index]);
+                              } else {
+                                SearchController controller =
+                                    Get.put(SearchController());
+                                HapticFeedback.lightImpact();
+                                controller.searchDelete(
+                                    controller.searchListId[index]);
+                              }
 
-                                // addController
-                                //     .favDelete(addController.favoriteItem[index]);
+                              // addController
+                              //     .favDelete(addController.favoriteItem[index]);
+                            },
+                            child: animatedUnder(
+                                icon: Icons.delete_outline_outlined,
+                                text: 'Delete'.tr),
+                          ),
+                          const Spacer(),
+                          num == 1
+                              ? InkWell(
+                                  onTap: () {
+                                    Get.lazyPut(() => AddController());
+                                    HapticFeedback.lightImpact();
+
+                                    Get.to(
+                                      AddView(
+                                          title: model.title,
+                                          isFav: model.isFavorite,
+                                          isPriv: model.isPrivate,
+                                          url: model.url,
+                                          index: index,
+                                          appSave: 'UPDATE'.tr,
+                                          appTitle: 'Update-Link'.tr),
+                                    );
+                                    SaveAd.loadSaveAd();
+                                  },
+                                  child: animatedUnder(
+                                      icon: Icons.edit, text: 'Edit'.tr))
+                              : const SizedBox(),
+                          num == 1 ? const Spacer() : const SizedBox(),
+                          InkWell(
+                              onTap: () {
+                                HapticFeedback.lightImpact();
+                                Share.share('${model.title} \n ${model.url!}');
                               },
                               child: animatedUnder(
-                                  icon: Icons.delete_outline_outlined,
-                                  text: 'Delete'.tr),
-                            ),
-                            const Spacer(),
-                            num == 1
-                                ? InkWell(
-                                    onTap: () {
-                                      Get.lazyPut(() => AddController());
-                                      HapticFeedback.lightImpact();
+                                  icon: Icons.share, text: 'Share'.tr)),
+                          const Spacer(),
+                          InkWell(
+                              onTap: () {
+                                HapticFeedback.heavyImpact();
 
-                                      Get.to(
-                                        AddView(
-                                            title: model.title,
-                                            isFav: model.isFavorite,
-                                            isPriv: model.isPrivate,
-                                            url: model.url,
-                                            index: index,
-                                            appSave: 'UPDATE'.tr,
-                                            appTitle: 'Update-Link'.tr),
-                                      );
-                                      SaveAd.loadSaveAd();
-                                    },
-                                    child: animatedUnder(
-                                        icon: Icons.edit, text: 'Edit'.tr))
-                                : const SizedBox(),
-                            num == 1 ? const Spacer() : const SizedBox(),
-                            InkWell(
-                                onTap: () {
-                                  HapticFeedback.lightImpact();
-                                  Share.share(
-                                      '${model.title} \n ${model.url!}');
-                                },
-                                child: animatedUnder(
-                                    icon: Icons.share, text: 'Share'.tr)),
-                            const Spacer(),
-                            InkWell(
-                                onTap: () {
-                                  HapticFeedback.heavyImpact();
-
-                                  FlutterClipboard.copy(model.url!);
-                                  toast(text: 'Copied'.tr);
-                                },
-                                child: animatedUnder(
-                                    icon: Icons.copy, text: 'Copy'.tr)),
-                          ],
-                        ),
+                                FlutterClipboard.copy(model.url!);
+                                toast(text: 'Copied'.tr);
+                              },
+                              child: animatedUnder(
+                                  icon: Icons.copy, text: 'Copy'.tr)),
+                        ],
                       ),
-                    )
-                  ],
-                ),
+                    ),
+                  )
+                ],
               ),
             ),
           ),
