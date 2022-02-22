@@ -6,7 +6,7 @@ import 'package:linker/app/modules/add/models/model.dart';
 
 class SearchController extends GetxController {
   var searchList = [].obs;
-  var searchListId = [].obs;
+  var searchListId = <String>[].obs;
   var storage = GetStorage();
   var searchController = TextEditingController();
 

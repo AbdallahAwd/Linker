@@ -13,12 +13,15 @@ class Favorites extends GetView<AddController> {
 
     return Obx(() {
       if (controller.favoriteList.isNotEmpty) {
-        return ListView.separated(
-            physics: const BouncingScrollPhysics(),
-            itemBuilder: (context, index) => linkerBuilder(
-                controller.favoriteList[index], index, 2, context),
-            separatorBuilder: (context, index) => const SizedBox(height: 5),
-            itemCount: controller.favoriteList.length);
+        return Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: ListView.separated(
+              physics: const BouncingScrollPhysics(),
+              itemBuilder: (context, index) => linkerBuilder(
+                  controller.favoriteList[index], index, 2, context),
+              separatorBuilder: (context, index) => const SizedBox(height: 5),
+              itemCount: controller.favoriteList.length),
+        );
       } else {
         return SizedBox(
           width: double.infinity,
