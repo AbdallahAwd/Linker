@@ -1,4 +1,5 @@
 // ignore_for_file: prefer_final_fields
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:clipboard/clipboard.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -142,45 +143,40 @@ Widget linkerBuilder(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             SizedBox(
-                              width: width / 2,
-                              child: Text(
-                                model.title!,
-                                style: TextStyle(
-                                  fontFamily: 'Candara',
-                                  fontSize: 20,
-                                  color: Colors.white.withOpacity(0.8),
-                                  letterSpacing: 1.7799999999999998,
-                                  fontWeight: FontWeight.w700,
-                                  height: 0.8,
-                                ),
-                                overflow: TextOverflow.ellipsis,
-                                textHeightBehavior: const TextHeightBehavior(
-                                    applyHeightToFirstAscent: false),
-                                softWrap: false,
-                              ),
-                            ),
+                                width: width / 2,
+                                child: AutoSizeText(
+                                  model.title!,
+                                  style: TextStyle(
+                                    fontFamily: 'Candara',
+                                    fontSize: 20,
+                                    color: Colors.white.withOpacity(0.8),
+                                    letterSpacing: 1.7799999999999998,
+                                    fontWeight: FontWeight.w700,
+                                    height: 0.8,
+                                  ),
+                                  overflow: TextOverflow.ellipsis,
+                                  softWrap: false,
+                                  maxLines: 1,
+                                )),
                             const SizedBox(
                               height: 5,
                             ),
                             SizedBox(
-                              width: 200,
-                              child: Text(
-                                model.url!,
-                                style: const TextStyle(
-                                  fontFamily: 'Candara',
-                                  fontSize: 15,
-                                  color: Color(0x80000000),
-                                  letterSpacing: 1.335,
-                                  fontWeight: FontWeight.w700,
-                                  height: 1.6,
-                                ),
-                                maxLines: 1,
-                                textHeightBehavior: const TextHeightBehavior(
-                                    applyHeightToFirstAscent: false),
-                                textAlign: TextAlign.start,
-                                softWrap: false,
-                              ),
-                            ),
+                                width: width / 2,
+                                child: AutoSizeText(
+                                  model.url!,
+                                  style: TextStyle(
+                                    fontFamily: 'Candara',
+                                    fontSize: 20,
+                                    color: Colors.black.withOpacity(0.8),
+                                    letterSpacing: 1.7799999999999998,
+                                    fontWeight: FontWeight.w700,
+                                    height: 0.8,
+                                  ),
+                                  overflow: TextOverflow.ellipsis,
+                                  softWrap: false,
+                                  maxLines: 1,
+                                )),
                           ],
                         ),
                         IconButton(
