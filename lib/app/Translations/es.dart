@@ -51,6 +51,7 @@ const Map<String, String> es = {
   'Log-Out': 'Cerrar sesión',
   //appTheme
   'App-Theme': 'Temas de aplicaciones',
+  'Themes': 'Temas',
   'Follow-System': 'Seguir sistema',
   'Dark': 'Tema oscuro',
   'Light': 'Tema de luz',

@@ -2,6 +2,7 @@ import 'package:floating_bottom_navigation_bar/floating_bottom_navigation_bar.da
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:linker/app/modules/add/controller/add_controller.dart';
 import 'package:linker/app/modules/add/view/add.dart';
 import 'package:linker/app/routes/app_pages.dart';
@@ -55,7 +56,9 @@ class HomeView extends GetView<HomeController> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 FloatingNavbar(
-                  backgroundColor: mainColor,
+                  backgroundColor: GetStorage().read('isSecondColor')
+                      ? secondColor
+                      : mainColor,
                   onTap: (int val) async {
                     controller.navIndex.value = val;
                     if (val == 2) {

@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:linker/app/components/component.dart';
 import 'package:linker/app/modules/add/controller/add_controller.dart';
 import 'package:linker/app/modules/home/controllers/home_controller.dart';
@@ -103,7 +104,9 @@ class AddView extends GetView<AddController> {
                               onChanged: (val) {
                                 controller.changeFavCheck(val!);
                               },
-                              activeColor: mainColor,
+                              activeColor: GetStorage().read('isSecondColor')
+                                  ? secondColor
+                                  : mainColor,
                             ),
                           ),
                           mainText(context,
@@ -111,7 +114,9 @@ class AddView extends GetView<AddController> {
                           // const Spacer(),
                           GetBuilder<AddController>(
                             builder: (controller) => Checkbox(
-                                activeColor: mainColor,
+                                activeColor: GetStorage().read('isSecondColor')
+                                    ? secondColor
+                                    : mainColor,
                                 value: controller.privateCheck,
                                 onChanged: (val) {
                                   controller.changePriCheck(val!);

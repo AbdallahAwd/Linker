@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:linker/app/themes/colors.dart';
 
 class Themes {
+  bool isColor = false;
   static ThemeData lightTheme = ThemeData(
     checkboxTheme: const CheckboxThemeData(),
     bottomSheetTheme: const BottomSheetThemeData(
@@ -10,15 +12,16 @@ class Themes {
     scaffoldBackgroundColor: Colors.white,
     outlinedButtonTheme: OutlinedButtonThemeData(
       style: OutlinedButton.styleFrom(
-        primary: mainColor,
+        primary: GetStorage().read('isSecondColor') ? secondColor : mainColor,
       ),
     ),
-    floatingActionButtonTheme: const FloatingActionButtonThemeData(
-      backgroundColor: mainColor,
+    floatingActionButtonTheme: FloatingActionButtonThemeData(
+      backgroundColor:
+          GetStorage().read('isSecondColor') ? secondColor : mainColor,
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
-      primary: mainColor,
+      primary: GetStorage().read('isSecondColor') ? secondColor : mainColor,
     )),
     appBarTheme: AppBarTheme(
       iconTheme: const IconThemeData(color: Colors.black),
@@ -41,24 +44,27 @@ class Themes {
     ),
   );
   static ThemeData darkTheme = ThemeData.dark().copyWith(
-    primaryColorDark: mainColor,
-    primaryColor: mainColor,
-    primaryColorLight: mainColor,
+    primaryColorDark:
+        GetStorage().read('isSecondColor') ? secondColor : mainColor,
+    primaryColor: GetStorage().read('isSecondColor') ? secondColor : mainColor,
+    primaryColorLight:
+        GetStorage().read('isSecondColor') ? secondColor : mainColor,
     bottomSheetTheme: const BottomSheetThemeData(
       backgroundColor: Color(0xFF141414),
     ),
     scaffoldBackgroundColor: const Color(0xFF141414),
     outlinedButtonTheme: OutlinedButtonThemeData(
       style: OutlinedButton.styleFrom(
-        primary: mainColor,
+        primary: GetStorage().read('isSecondColor') ? secondColor : mainColor,
       ),
     ),
-    floatingActionButtonTheme: const FloatingActionButtonThemeData(
-      backgroundColor: mainColor,
+    floatingActionButtonTheme: FloatingActionButtonThemeData(
+      backgroundColor:
+          GetStorage().read('isSecondColor') ? secondColor : mainColor,
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
-      primary: mainColor,
+      primary: GetStorage().read('isSecondColor') ? secondColor : mainColor,
     )),
     appBarTheme: const AppBarTheme(
       elevation: 2,
@@ -84,15 +90,15 @@ class Themes {
   // scaffoldBackgroundColor: const Color(0xFF141414),
   // outlinedButtonTheme: OutlinedButtonThemeData(
   //   style: OutlinedButton.styleFrom(
-  //     primary: mainColor,
+  //     primary: isSecondColor ? secondColor: mainColor ,
   //   ),
   // ),
   // floatingActionButtonTheme: const FloatingActionButtonThemeData(
-  //   backgroundColor: mainColor,
+  //   backgroundColor: isSecondColor ? secondColor: mainColor ,
   // ),
   // elevatedButtonTheme: ElevatedButtonThemeData(
   //     style: ElevatedButton.styleFrom(
-  //   primary: mainColor,
+  //   primary: isSecondColor ? secondColor: mainColor ,
   // )),
   // appBarTheme: AppBarTheme(
   //   elevation: 2,

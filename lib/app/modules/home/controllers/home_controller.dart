@@ -10,6 +10,7 @@ import 'package:linker/app/modules/home/views/favorites.dart';
 import 'package:linker/app/modules/home/views/links.dart';
 import 'package:linker/app/modules/home/views/settings.dart';
 import 'package:linker/app/modules/on_boarding/models/user_model.dart';
+import 'package:linker/app/themes/colors.dart';
 
 import '../../../components/component.dart';
 import '../views/auth.dart';
@@ -17,7 +18,7 @@ import '../views/auth.dart';
 class HomeController extends GetxController {
   var navIndex = 0.obs;
   var storage = GetStorage();
-
+  var colorIndex = 0.obs;
   var appBarTitle = <String>[
     'Links',
     'Favorites',
@@ -39,6 +40,12 @@ class HomeController extends GetxController {
   void changeTheme(Themess value) {
     theme = value;
     update();
+  }
+
+  void changeColor(int indez) {
+    colorIndex.value = indez;
+    indez == 0 ? isSecondColor = false : isSecondColor = true;
+    GetStorage().write('isSecondColor', isSecondColor);
   }
 
   List<UserModel> user = [];

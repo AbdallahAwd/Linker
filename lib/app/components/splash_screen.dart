@@ -1,5 +1,6 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
 import 'dart:async';
 
 import 'package:linker/app/modules/on_boarding/views/on_boarding.dart';
@@ -73,7 +74,8 @@ class _SecondPageState extends State<SecondPage> {
     double _h = MediaQuery.of(context).size.height;
     double _w = MediaQuery.of(context).size.width;
     return Scaffold(
-      backgroundColor: mainColor,
+      backgroundColor:
+          GetStorage().read('isSecondColor') ? secondColor : mainColor,
       body: Center(
         child: Column(
           children: [

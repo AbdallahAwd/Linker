@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:linker/app/modules/search/controller/seach_controller.dart';
 import 'package:linker/app/themes/colors.dart';
 import 'package:linker/app/themes/my_flutter_app_icons.dart';
@@ -26,9 +27,11 @@ class SearchView extends GetView<SearchController> {
                   borderSide: BorderSide.none,
                 ),
                 suffixIcon: IconButton(
-                  icon: const Icon(
+                  icon: Icon(
                     Icons.highlight_remove_sharp,
-                    color: mainColor,
+                    color: GetStorage().read('isSecondColor')
+                        ? secondColor
+                        : mainColor,
                   ),
                   onPressed: () => controller.clear(),
                 )),
@@ -56,10 +59,12 @@ class SearchView extends GetView<SearchController> {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Icon(
+                Icon(
                   Icons.search_off_outlined,
                   size: 120,
-                  color: mainColor,
+                  color: GetStorage().read('isSecondColor')
+                      ? secondColor
+                      : mainColor,
                 ),
                 const SizedBox(
                   height: 15,

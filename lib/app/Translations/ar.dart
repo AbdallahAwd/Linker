@@ -50,6 +50,7 @@ const Map<String, String> ar = {
   'Log-Out': 'خروج',
   //appTheme
   'App-Theme': 'سمات التطبيق',
+  'Themes': 'السمات',
   'Follow-System': 'اتباع النظام',
   'Dark': 'الوضع المظلم',
   'Light': 'وضع الضوء',

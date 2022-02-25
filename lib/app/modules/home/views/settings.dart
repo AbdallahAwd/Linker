@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:linker/app/modules/on_boarding/controller/on_boardding.dart';
 import 'package:linker/app/routes/app_pages.dart';
 import 'package:linker/app/themes/colors.dart';
@@ -20,12 +21,27 @@ class _SettingsAppState extends State<SettingsApp> {
   OnBoardingController controller = Get.put(OnBoardingController());
   HomeController homeController = Get.put(HomeController());
 
+  int colorIndex = 0;
+
   @override
   void initState() {
     homeController.storage.read('CurrentTheme');
     homeController.storage.read('language');
 
     super.initState();
+  }
+
+  void changeColor(int indez) {
+    setState(() {
+      colorIndex = indez;
+      indez == 0 ? isSecondColor = false : isSecondColor = true;
+      GetStorage().write('isSecondColor', isSecondColor);
+    });
+    // GetStorage().read('isSecondColor') ? secondColor:mainColor;
+  }
+
+  changeIndex() {
+    setState(() {});
   }
 
   String? value;
@@ -49,7 +65,9 @@ class _SettingsAppState extends State<SettingsApp> {
             child: Row(
               children: [
                 CircleAvatar(
-                  backgroundColor: mainColor,
+                  backgroundColor: GetStorage().read('isSecondColor')
+                      ? secondColor
+                      : mainColor,
                   radius: 45,
                   child: Container(
                     decoration:
@@ -98,7 +116,6 @@ class _SettingsAppState extends State<SettingsApp> {
             child: ListTile(
               leading: const Icon(Icons.dark_mode),
               title: Text('App-Theme'.tr),
-              // trailing: Text('Follow System'),
               onTap: () {
                 Get.defaultDialog(
                     title: 'App-Theme'.tr,
@@ -109,7 +126,9 @@ class _SettingsAppState extends State<SettingsApp> {
                             title: Text('Follow-System'.tr),
                             leading: Radio<Themess>(
                               value: Themess.FollowSystem,
-                              activeColor: mainColor,
+                              activeColor: GetStorage().read('isSecondColor')
+                                  ? secondColor
+                                  : mainColor,
                               groupValue: homeController.theme,
                               onChanged: (Themess? value) {
                                 homeController.changeTheme(value!);
@@ -124,7 +143,9 @@ class _SettingsAppState extends State<SettingsApp> {
                             title: Text('Dark'.tr),
                             leading: Radio<Themess>(
                               value: Themess.DarkMode,
-                              activeColor: mainColor,
+                              activeColor: GetStorage().read('isSecondColor')
+                                  ? secondColor
+                                  : mainColor,
                               groupValue: homeController.theme,
                               onChanged: (Themess? value) {
                                 homeController.changeTheme(value!);
@@ -138,7 +159,9 @@ class _SettingsAppState extends State<SettingsApp> {
                           ListTile(
                             title: Text('Light'.tr),
                             leading: Radio<Themess>(
-                              activeColor: mainColor,
+                              activeColor: GetStorage().read('isSecondColor')
+                                  ? secondColor
+                                  : mainColor,
                               value: Themess.LightMode,
                               groupValue: homeController.theme,
                               onChanged: (Themess? value) {
@@ -156,6 +179,55 @@ class _SettingsAppState extends State<SettingsApp> {
               },
             ),
           ),
+          SlideFadeTransition(
+              curve: Curves.elasticOut,
+              delayStart: const Duration(milliseconds: 500),
+              animationDuration: const Duration(milliseconds: 1200),
+              offset: 2.5,
+              direction: Direction.vertical,
+              child: ListTile(
+                leading: const Icon(Icons.color_lens),
+                title: Text('Themes'.tr),
+                trailing: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    GetBuilder<HomeController>(
+                      builder: (homeController) => SizedBox(
+                        height: 50,
+                        width: 120,
+                        child: ListView.separated(
+                          separatorBuilder: (context, index) => const SizedBox(
+                            width: 5,
+                          ),
+                          scrollDirection: Axis.horizontal,
+                          itemBuilder: (context, index) {
+                            // bool isColor = false;
+                            return InkWell(
+                              onTap: () {
+                                changeColor(index);
+                              },
+                              child: Container(
+                                width: 25,
+                                height: 25,
+                                decoration: BoxDecoration(
+                                    border: Border.all(
+                                        color: colorIndex == index
+                                            ? Colors.grey
+                                            : Colors.transparent,
+                                        width: 2),
+                                    color: index == 0 ? mainColor : secondColor,
+                                    shape: BoxShape.circle),
+                              ),
+                            );
+                          },
+                          itemCount: 2,
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              )),
           SlideFadeTransition(
             curve: Curves.elasticOut,
             delayStart: const Duration(milliseconds: 1000),
@@ -255,10 +327,10 @@ Widget textUtil({text}) {
     width: 200,
     child: Text(
       text,
-      style: const TextStyle(
+      style: TextStyle(
         fontFamily: 'Candara',
         fontSize: 15,
-        color: Color(0xff6200ee),
+        color: GetStorage().read('isSecondColor') ? secondColor : mainColor,
         letterSpacing: 1.335,
         fontWeight: FontWeight.w700,
         height: 1.0666666666666667,

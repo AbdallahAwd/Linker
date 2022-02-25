@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:linker/app/themes/colors.dart';
 
 Widget defaultTextFormFeild({
@@ -36,15 +37,22 @@ Widget defaultTextFormFeild({
           suffixIcon: IconButton(
             onPressed: suffPress,
             icon: Icon(suff),
-            color: mainColor,
+            color: GetStorage().read('isSecondColor') ? secondColor : mainColor,
           ),
           border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(20.0),
-              borderSide: const BorderSide(color: mainColor)),
-          focusColor: mainColor,
+              borderSide: BorderSide(
+                  color: GetStorage().read('isSecondColor')
+                      ? secondColor
+                      : mainColor)),
+          focusColor:
+              GetStorage().read('isSecondColor') ? secondColor : mainColor,
           focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(20.0),
-              borderSide: const BorderSide(color: mainColor)),
+              borderSide: BorderSide(
+                  color: GetStorage().read('isSecondColor')
+                      ? secondColor
+                      : mainColor)),
           labelText: hintText,
           labelStyle: const TextStyle(color: Color.fromARGB(255, 98, 0, 238))),
       validator: validate,

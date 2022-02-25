@@ -50,6 +50,7 @@ const Map<String, String> en = {
   'Log-Out': 'Log Out',
   //appTheme
   'App-Theme': 'App Themes',
+  'Themes': 'Themes',
   'Follow-System': 'Follow System',
   'Dark': 'Dark Theme',
   'Light': 'Light Theme',
