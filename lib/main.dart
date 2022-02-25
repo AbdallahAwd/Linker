@@ -19,7 +19,8 @@ Future<void> main() async {
   await GetStorage.init();
   String? uId = GetStorage().read('uId');
   String? isDark = GetStorage().read('isDark');
-  isSecondColor = GetStorage().read('isSecondColor');
+  isSecondColor = GetStorage().read('isSecondColor') ?? false;
+
   GetStorage().read('language') == null
       ? GetStorage().write('language', Get.deviceLocale.toString())
       : null;

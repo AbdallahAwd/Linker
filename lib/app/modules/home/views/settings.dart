@@ -65,9 +65,7 @@ class _SettingsAppState extends State<SettingsApp> {
             child: Row(
               children: [
                 CircleAvatar(
-                  backgroundColor: GetStorage().read('isSecondColor')
-                      ? secondColor
-                      : mainColor,
+                  backgroundColor: isSecondColor ? secondColor : mainColor,
                   radius: 45,
                   child: Container(
                     decoration:
@@ -330,7 +328,7 @@ Widget textUtil({text}) {
       style: TextStyle(
         fontFamily: 'Candara',
         fontSize: 15,
-        color: GetStorage().read('isSecondColor') ? secondColor : mainColor,
+        color: isSecondColor ? secondColor : mainColor,
         letterSpacing: 1.335,
         fontWeight: FontWeight.w700,
         height: 1.0666666666666667,

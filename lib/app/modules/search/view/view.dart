@@ -62,9 +62,7 @@ class SearchView extends GetView<SearchController> {
                 Icon(
                   Icons.search_off_outlined,
                   size: 120,
-                  color: GetStorage().read('isSecondColor')
-                      ? secondColor
-                      : mainColor,
+                  color: isSecondColor ? secondColor : mainColor,
                 ),
                 const SizedBox(
                   height: 15,
