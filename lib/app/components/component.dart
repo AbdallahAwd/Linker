@@ -31,7 +31,7 @@ Widget defaultTextFormFeild({
           filled: true,
           prefixIcon: Icon(
             pre,
-            color: const Color.fromARGB(255, 98, 0, 238),
+            color: GetStorage().read('isSecondColor') ? secondColor : mainColor,
           ),
           suffix: suffixWidget,
           suffixIcon: IconButton(
@@ -54,7 +54,10 @@ Widget defaultTextFormFeild({
                       ? secondColor
                       : mainColor)),
           labelText: hintText,
-          labelStyle: const TextStyle(color: Color.fromARGB(255, 98, 0, 238))),
+          labelStyle: TextStyle(
+              color: GetStorage().read('isSecondColor')
+                  ? secondColor
+                  : mainColor)),
       validator: validate,
     );
 Future toast({
