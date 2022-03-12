@@ -55,7 +55,7 @@ class Links extends GetView<HomeController> {
         return GetBuilder<HomeController>(
           builder: (contoller) => AnimationLimiter(
             child: ListView.builder(
-                padding: EdgeInsets.all(w / 30),
+                padding: EdgeInsets.all(w / 40),
                 physics: const BouncingScrollPhysics(
                     parent: AlwaysScrollableScrollPhysics()),
                 itemBuilder: (context, index) => linkerBuilder(
