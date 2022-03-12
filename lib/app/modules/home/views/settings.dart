@@ -162,53 +162,6 @@ class _SettingsAppState extends State<SettingsApp> {
             ),
           ),
           SlideFadeTransition(
-              curve: Curves.elasticOut,
-              delayStart: const Duration(milliseconds: 500),
-              animationDuration: const Duration(milliseconds: 1200),
-              offset: 2.5,
-              direction: Direction.vertical,
-              child: ListTile(
-                leading: const Icon(Icons.color_lens),
-                title: Text('Themes'.tr),
-                trailing: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    GetBuilder<HomeController>(
-                      builder: (homeController) => SizedBox(
-                        height: 50,
-                        width: 120,
-                        child: ListView.separated(
-                          separatorBuilder: (context, index) => const SizedBox(
-                            width: 5,
-                          ),
-                          scrollDirection: Axis.horizontal,
-                          itemBuilder: (context, index) {
-                            // bool isColor = false;
-                            return InkWell(
-                              onTap: () {},
-                              child: Container(
-                                width: 25,
-                                height: 25,
-                                decoration: BoxDecoration(
-                                    border: Border.all(
-                                        color: colorIndex == index
-                                            ? Colors.grey
-                                            : Colors.transparent,
-                                        width: 2),
-                                    color: mainColor,
-                                    shape: BoxShape.circle),
-                              ),
-                            );
-                          },
-                          itemCount: 2,
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-              )),
-          SlideFadeTransition(
             curve: Curves.elasticOut,
             delayStart: const Duration(milliseconds: 1000),
             animationDuration: const Duration(milliseconds: 1200),
