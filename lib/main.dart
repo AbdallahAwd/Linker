@@ -2,6 +2,7 @@
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
@@ -19,6 +20,7 @@ Future<void> main() async {
   await GetStorage.init();
   String? uId = GetStorage().read('uId');
   String? isDark = GetStorage().read('isDark');
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 
   GetStorage().read('language') == null
       ? GetStorage().write('language', Get.deviceLocale.toString())
@@ -37,7 +39,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Get.lazyPut(() => HomeController());
-    // SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 
     return GetMaterialApp(
       title: "Linker",
