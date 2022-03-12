@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:linker/app/components/component.dart';
 import 'package:linker/app/modules/add/controller/add_controller.dart';
 import 'package:linker/app/modules/home/controllers/home_controller.dart';

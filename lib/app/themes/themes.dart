@@ -14,7 +14,7 @@ class Themes {
         primary: mainColor,
       ),
     ),
-    floatingActionButtonTheme: FloatingActionButtonThemeData(
+    floatingActionButtonTheme: const FloatingActionButtonThemeData(
       backgroundColor: mainColor,
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
@@ -54,7 +54,7 @@ class Themes {
         primary: mainColor,
       ),
     ),
-    floatingActionButtonTheme: FloatingActionButtonThemeData(
+    floatingActionButtonTheme: const FloatingActionButtonThemeData(
       backgroundColor: mainColor,
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(

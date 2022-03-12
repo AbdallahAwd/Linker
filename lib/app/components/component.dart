@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:linker/app/themes/colors.dart';
 
 Widget defaultTextFormFeild({

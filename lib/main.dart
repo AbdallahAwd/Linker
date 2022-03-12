@@ -7,7 +7,6 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:linker/app/Translations/translation.dart';
-import 'package:linker/app/themes/colors.dart';
 import 'package:linker/app/themes/themes.dart';
 import 'app/components/splash_screen.dart';
 import 'app/modules/home/controllers/home_controller.dart';

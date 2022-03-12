@@ -10,7 +10,6 @@ import 'package:linker/app/modules/home/views/favorites.dart';
 import 'package:linker/app/modules/home/views/links.dart';
 import 'package:linker/app/modules/home/views/settings.dart';
 import 'package:linker/app/modules/on_boarding/models/user_model.dart';
-import 'package:linker/app/themes/colors.dart';
 
 import '../../../components/component.dart';
 import '../views/auth.dart';

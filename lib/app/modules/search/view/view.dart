@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:linker/app/modules/search/controller/seach_controller.dart';
 import 'package:linker/app/themes/colors.dart';
 import 'package:linker/app/themes/my_flutter_app_icons.dart';
@@ -57,7 +56,7 @@ class SearchView extends GetView<SearchController> {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(
+                const Icon(
                   Icons.search_off_outlined,
                   size: 120,
                   color: mainColor,

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:linker/app/modules/on_boarding/controller/on_boardding.dart';
 import 'package:linker/app/routes/app_pages.dart';
 import 'package:linker/app/themes/colors.dart';
@@ -308,7 +307,7 @@ Widget textUtil({text}) {
     width: 200,
     child: Text(
       text,
-      style: TextStyle(
+      style: const TextStyle(
         fontFamily: 'Candara',
         fontSize: 15,
         color: mainColor,
