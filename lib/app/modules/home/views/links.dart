@@ -126,7 +126,7 @@ Widget linkerBuilder(
               height: 95,
               margin: EdgeInsets.only(bottom: width / 20),
               decoration: BoxDecoration(
-                color: isSecondColor ? secondColor : mainColor,
+                color: mainColor,
                 borderRadius: BorderRadius.circular(20.0),
                 border: Border.all(width: 1.0, color: const Color(0xff707070)),
               ),

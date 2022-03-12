@@ -19,7 +19,6 @@ Future<void> main() async {
   await GetStorage.init();
   String? uId = GetStorage().read('uId');
   String? isDark = GetStorage().read('isDark');
-  isSecondColor = GetStorage().read('isSecondColor') ?? false;
 
   GetStorage().read('language') == null
       ? GetStorage().write('language', Get.deviceLocale.toString())
@@ -38,6 +37,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Get.lazyPut(() => HomeController());
+    // SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+
     return GetMaterialApp(
       title: "Linker",
       translations: Localization(),

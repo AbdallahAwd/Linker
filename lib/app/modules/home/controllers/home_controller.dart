@@ -42,12 +42,6 @@ class HomeController extends GetxController {
     update();
   }
 
-  void changeColor(int indez) {
-    colorIndex.value = indez;
-    indez == 0 ? isSecondColor = false : isSecondColor = true;
-    GetStorage().write('isSecondColor', isSecondColor);
-  }
-
   List<UserModel> user = [];
 
   var linkList = <AddLinkModel>[].obs;

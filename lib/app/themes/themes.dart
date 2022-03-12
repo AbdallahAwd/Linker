@@ -11,15 +11,15 @@ class Themes {
     scaffoldBackgroundColor: Colors.white,
     outlinedButtonTheme: OutlinedButtonThemeData(
       style: OutlinedButton.styleFrom(
-        primary: isSecondColor ? secondColor : mainColor,
+        primary: mainColor,
       ),
     ),
     floatingActionButtonTheme: FloatingActionButtonThemeData(
-      backgroundColor: isSecondColor ? secondColor : mainColor,
+      backgroundColor: mainColor,
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
-      primary: isSecondColor ? secondColor : mainColor,
+      primary: mainColor,
     )),
     appBarTheme: AppBarTheme(
       iconTheme: const IconThemeData(color: Colors.black),
@@ -42,24 +42,24 @@ class Themes {
     ),
   );
   static ThemeData darkTheme = ThemeData.dark().copyWith(
-    primaryColorDark: isSecondColor ? secondColor : mainColor,
-    primaryColor: isSecondColor ? secondColor : mainColor,
-    primaryColorLight: isSecondColor ? secondColor : mainColor,
+    primaryColorDark: mainColor,
+    primaryColor: mainColor,
+    primaryColorLight: mainColor,
     bottomSheetTheme: const BottomSheetThemeData(
       backgroundColor: Color(0xFF141414),
     ),
     scaffoldBackgroundColor: const Color(0xFF141414),
     outlinedButtonTheme: OutlinedButtonThemeData(
       style: OutlinedButton.styleFrom(
-        primary: isSecondColor ? secondColor : mainColor,
+        primary: mainColor,
       ),
     ),
     floatingActionButtonTheme: FloatingActionButtonThemeData(
-      backgroundColor: isSecondColor ? secondColor : mainColor,
+      backgroundColor: mainColor,
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
-      primary: isSecondColor ? secondColor : mainColor,
+      primary: mainColor,
     )),
     appBarTheme: const AppBarTheme(
       elevation: 2,

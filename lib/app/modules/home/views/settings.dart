@@ -31,15 +31,6 @@ class _SettingsAppState extends State<SettingsApp> {
     super.initState();
   }
 
-  void changeColor(int indez) {
-    setState(() {
-      colorIndex = indez;
-      indez == 0 ? isSecondColor = false : isSecondColor = true;
-      GetStorage().write('isSecondColor', isSecondColor);
-    });
-    // GetStorage().read('isSecondColor') ? secondColor:mainColor;
-  }
-
   changeIndex() {
     setState(() {});
   }
@@ -65,7 +56,7 @@ class _SettingsAppState extends State<SettingsApp> {
             child: Row(
               children: [
                 CircleAvatar(
-                  backgroundColor: isSecondColor ? secondColor : mainColor,
+                  backgroundColor: mainColor,
                   radius: 45,
                   child: Container(
                     decoration:
@@ -124,9 +115,7 @@ class _SettingsAppState extends State<SettingsApp> {
                             title: Text('Follow-System'.tr),
                             leading: Radio<Themess>(
                               value: Themess.FollowSystem,
-                              activeColor: GetStorage().read('isSecondColor')
-                                  ? secondColor
-                                  : mainColor,
+                              activeColor: mainColor,
                               groupValue: homeController.theme,
                               onChanged: (Themess? value) {
                                 homeController.changeTheme(value!);
@@ -141,9 +130,7 @@ class _SettingsAppState extends State<SettingsApp> {
                             title: Text('Dark'.tr),
                             leading: Radio<Themess>(
                               value: Themess.DarkMode,
-                              activeColor: GetStorage().read('isSecondColor')
-                                  ? secondColor
-                                  : mainColor,
+                              activeColor: mainColor,
                               groupValue: homeController.theme,
                               onChanged: (Themess? value) {
                                 homeController.changeTheme(value!);
@@ -157,9 +144,7 @@ class _SettingsAppState extends State<SettingsApp> {
                           ListTile(
                             title: Text('Light'.tr),
                             leading: Radio<Themess>(
-                              activeColor: GetStorage().read('isSecondColor')
-                                  ? secondColor
-                                  : mainColor,
+                              activeColor: mainColor,
                               value: Themess.LightMode,
                               groupValue: homeController.theme,
                               onChanged: (Themess? value) {
@@ -202,9 +187,7 @@ class _SettingsAppState extends State<SettingsApp> {
                           itemBuilder: (context, index) {
                             // bool isColor = false;
                             return InkWell(
-                              onTap: () {
-                                changeColor(index);
-                              },
+                              onTap: () {},
                               child: Container(
                                 width: 25,
                                 height: 25,
@@ -214,7 +197,7 @@ class _SettingsAppState extends State<SettingsApp> {
                                             ? Colors.grey
                                             : Colors.transparent,
                                         width: 2),
-                                    color: index == 0 ? mainColor : secondColor,
+                                    color: mainColor,
                                     shape: BoxShape.circle),
                               ),
                             );
@@ -328,7 +311,7 @@ Widget textUtil({text}) {
       style: TextStyle(
         fontFamily: 'Candara',
         fontSize: 15,
-        color: isSecondColor ? secondColor : mainColor,
+        color: mainColor,
         letterSpacing: 1.335,
         fontWeight: FontWeight.w700,
         height: 1.0666666666666667,

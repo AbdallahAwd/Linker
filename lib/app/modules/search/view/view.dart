@@ -27,11 +27,9 @@ class SearchView extends GetView<SearchController> {
                   borderSide: BorderSide.none,
                 ),
                 suffixIcon: IconButton(
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.highlight_remove_sharp,
-                    color: GetStorage().read('isSecondColor')
-                        ? secondColor
-                        : mainColor,
+                    color: mainColor,
                   ),
                   onPressed: () => controller.clear(),
                 )),
@@ -62,7 +60,7 @@ class SearchView extends GetView<SearchController> {
                 Icon(
                   Icons.search_off_outlined,
                   size: 120,
-                  color: isSecondColor ? secondColor : mainColor,
+                  color: mainColor,
                 ),
                 const SizedBox(
                   height: 15,

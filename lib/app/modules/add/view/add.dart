@@ -104,9 +104,7 @@ class AddView extends GetView<AddController> {
                               onChanged: (val) {
                                 controller.changeFavCheck(val!);
                               },
-                              activeColor: GetStorage().read('isSecondColor')
-                                  ? secondColor
-                                  : mainColor,
+                              activeColor: mainColor,
                             ),
                           ),
                           mainText(context,
@@ -114,9 +112,7 @@ class AddView extends GetView<AddController> {
                           // const Spacer(),
                           GetBuilder<AddController>(
                             builder: (controller) => Checkbox(
-                                activeColor: GetStorage().read('isSecondColor')
-                                    ? secondColor
-                                    : mainColor,
+                                activeColor: mainColor,
                                 value: controller.privateCheck,
                                 onChanged: (val) {
                                   controller.changePriCheck(val!);

@@ -31,28 +31,23 @@ Widget defaultTextFormFeild({
           filled: true,
           prefixIcon: Icon(
             pre,
-            color: isSecondColor ? secondColor : mainColor,
+            color: mainColor,
           ),
           suffix: suffixWidget,
           suffixIcon: IconButton(
             onPressed: suffPress,
             icon: Icon(suff),
-            color: isSecondColor ? secondColor : mainColor,
+            color: mainColor,
           ),
           border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(20.0),
-              borderSide:
-                  BorderSide(color: isSecondColor ? secondColor : mainColor)),
-          focusColor: isSecondColor ? secondColor : mainColor,
+              borderSide: const BorderSide(color: mainColor)),
+          focusColor: mainColor,
           focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(20.0),
-              borderSide:
-                  BorderSide(color: isSecondColor ? secondColor : mainColor)),
+              borderSide: const BorderSide(color: mainColor)),
           labelText: hintText,
-          labelStyle: TextStyle(
-              color: GetStorage().read('isSecondColor')
-                  ? secondColor
-                  : mainColor)),
+          labelStyle: const TextStyle(color: mainColor)),
       validator: validate,
     );
 Future toast({

@@ -73,7 +73,7 @@ class _SecondPageState extends State<SecondPage> {
     double _h = MediaQuery.of(context).size.height;
     double _w = MediaQuery.of(context).size.width;
     return Scaffold(
-      backgroundColor: isSecondColor ? secondColor : mainColor,
+      backgroundColor: mainColor,
       body: Center(
         child: Column(
           children: [

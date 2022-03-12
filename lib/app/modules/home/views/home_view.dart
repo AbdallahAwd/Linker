@@ -55,7 +55,7 @@ class HomeView extends GetView<HomeController> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 FloatingNavbar(
-                  backgroundColor: isSecondColor ? secondColor : mainColor,
+                  backgroundColor: mainColor,
                   onTap: (int val) async {
                     controller.navIndex.value = val;
                     if (val == 2) {
